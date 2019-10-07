@@ -51,8 +51,8 @@ func (c *Calificaciones) Create(w http.ResponseWriter, r *http.Request) {
 
 // Update a calificaiones by id
 func (c *Calificaciones) Update(w http.ResponseWriter, r *http.Request) {
-	idcalifico, _ := strconv.Atoi(chi.URLParam(r, "IDCalifico"))
-	idcalificado, _ := strconv.Atoi(chi.URLParam(r, "IDCalificado"))
+	idcalifico, _ := strconv.Atoi(chi.URLParam(r, "idcalifico"))
+	idcalificado, _ := strconv.Atoi(chi.URLParam(r, "idcalificado"))
 	data := models.Calificaciones{
 		IDCalifico:   int64(idcalifico),
 		IDCalificado: int64(idcalificado),
@@ -82,8 +82,8 @@ func (c *Calificaciones) GetByID(w http.ResponseWriter, r *http.Request) {
 
 // Delete a calificaiones
 func (c *Calificaciones) Delete(w http.ResponseWriter, r *http.Request) {
-	idcalifico, _ := strconv.Atoi(chi.URLParam(r, "IDCalifico"))
-	idcalificado, _ := strconv.Atoi(chi.URLParam(r, "IDCalificado"))
+	idcalifico, _ := strconv.Atoi(chi.URLParam(r, "idcalifico"))
+	idcalificado, _ := strconv.Atoi(chi.URLParam(r, "idcalificado"))
 	_, err := c.repo.Delete(r.Context(), int64(idcalifico), int64(idcalificado))
 
 	if err != nil {

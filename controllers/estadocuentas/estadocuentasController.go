@@ -51,7 +51,7 @@ func (c *EstadoCuentas) Create(w http.ResponseWriter, r *http.Request) {
 
 // Update a estadocuentas by id
 func (c *EstadoCuentas) Update(w http.ResponseWriter, r *http.Request) {
-	id, _ := strconv.Atoi(chi.URLParam(r, "ID"))
+	id, _ := strconv.Atoi(chi.URLParam(r, "id"))
 	data := models.EstadoCuentas{
 		ID: int64(id),
 	}
@@ -67,7 +67,7 @@ func (c *EstadoCuentas) Update(w http.ResponseWriter, r *http.Request) {
 
 // GetByID returns a estadocuentas details
 func (c *EstadoCuentas) GetByID(w http.ResponseWriter, r *http.Request) {
-	id, _ := strconv.Atoi(chi.URLParam(r, "ID"))
+	id, _ := strconv.Atoi(chi.URLParam(r, "id"))
 	payload, err := c.repo.GetByID(r.Context(), int64(id))
 
 	if err != nil {
@@ -79,7 +79,7 @@ func (c *EstadoCuentas) GetByID(w http.ResponseWriter, r *http.Request) {
 
 // Delete a estadocuentas
 func (c *EstadoCuentas) Delete(w http.ResponseWriter, r *http.Request) {
-	id, _ := strconv.Atoi(chi.URLParam(r, "ID"))
+	id, _ := strconv.Atoi(chi.URLParam(r, "id"))
 	_, err := c.repo.Delete(r.Context(), int64(id))
 
 	if err != nil {

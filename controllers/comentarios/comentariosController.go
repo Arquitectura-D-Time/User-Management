@@ -51,8 +51,8 @@ func (c *Comentarios) Create(w http.ResponseWriter, r *http.Request) {
 
 // Update a comentarios by id
 func (c *Comentarios) Update(w http.ResponseWriter, r *http.Request) {
-	idcomento, _ := strconv.Atoi(chi.URLParam(r, "IDComento"))
-	idcomentado, _ := strconv.Atoi(chi.URLParam(r, "IDComentado"))
+	idcomento, _ := strconv.Atoi(chi.URLParam(r, "idcomento"))
+	idcomentado, _ := strconv.Atoi(chi.URLParam(r, "idcomentado"))
 	data := models.Comentarios{
 		IDComento:   int64(idcomento),
 		IDComentado: int64(idcomentado),
@@ -69,8 +69,8 @@ func (c *Comentarios) Update(w http.ResponseWriter, r *http.Request) {
 
 // GetByID returns a comentarios details
 func (c *Comentarios) GetByID(w http.ResponseWriter, r *http.Request) {
-	idcomento, _ := strconv.Atoi(chi.URLParam(r, "IDComento"))
-	idcomentado, _ := strconv.Atoi(chi.URLParam(r, "IDComentado"))
+	idcomento, _ := strconv.Atoi(chi.URLParam(r, "idcomento"))
+	idcomentado, _ := strconv.Atoi(chi.URLParam(r, "idcomentado"))
 	payload, err := c.repo.GetByID(r.Context(), int64(idcomento), int64(idcomentado))
 
 	if err != nil {
@@ -82,8 +82,8 @@ func (c *Comentarios) GetByID(w http.ResponseWriter, r *http.Request) {
 
 // Delete a comentarios
 func (c *Comentarios) Delete(w http.ResponseWriter, r *http.Request) {
-	idcomento, _ := strconv.Atoi(chi.URLParam(r, "IDComento"))
-	idcomentado, _ := strconv.Atoi(chi.URLParam(r, "IDComentado"))
+	idcomento, _ := strconv.Atoi(chi.URLParam(r, "idcomento"))
+	idcomentado, _ := strconv.Atoi(chi.URLParam(r, "idcomentado"))
 	_, err := c.repo.Delete(r.Context(), int64(idcomento), int64(idcomentado))
 
 	if err != nil {
