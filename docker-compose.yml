@@ -1,5 +1,12 @@
 version: "2.1"
 services:
+  um-ms:
+    build: .
+    ports:
+      - "5005:5005"
+    depends_on:
+      um-db:
+        condition: service_healthy
   um-db:
     image: mysql:5.7
     healthcheck:
@@ -13,4 +20,4 @@ services:
       MYSQL_USER: Denis
       MYSQL_PASSWORD: 978
     ports:
-      - "3005:3005"
+      - "3306:3306"
