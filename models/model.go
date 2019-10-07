@@ -15,8 +15,8 @@ type Calificaciones struct {
 }
 
 type EstadoCuentas struct {
-	ID          int64  `json:"idcomento"`
-	Estado      int64  `json:"idcomentado"`
-	FechaInicio string `json:"comentario"`
-	FechaFinal  string `json:"fecha"`
+	ID          int64  `json:"id"`
+	Estado      int64  `json:"estado"`
+	FechaInicio string `json:"fechainicio"`
+	FechaFinal  string `json:"fechafinal"`
 }

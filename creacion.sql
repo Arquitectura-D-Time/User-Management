@@ -21,5 +21,5 @@ CREATE TABLE EstadoCuentas (
 	ID BIGINT NOT NULL,
 	Estado VARCHAR(255),
     FechaInicio VARCHAR(255),
-    FchaFinal VARCHAR(255)
+    FechaFinal VARCHAR(255)
 );
