@@ -54,8 +54,8 @@ func (c *Calificaciones) Update(w http.ResponseWriter, r *http.Request) {
 	idcalifico, _ := strconv.Atoi(chi.URLParam(r, "IDCalifico"))
 	idcalificado, _ := strconv.Atoi(chi.URLParam(r, "IDCalificado"))
 	data := models.Calificaciones{
-		IDCalifico: int64(idcalifico)
-		IDCalificado: int64(idcalificado)
+		IDCalifico:   int64(idcalifico),
+		IDCalificado: int64(idcalificado),
 	}
 	json.NewDecoder(r.Body).Decode(&data)
 	payload, err := c.repo.Update(r.Context(), &data)

@@ -53,7 +53,7 @@ func (c *EstadoCuentas) Create(w http.ResponseWriter, r *http.Request) {
 func (c *EstadoCuentas) Update(w http.ResponseWriter, r *http.Request) {
 	id, _ := strconv.Atoi(chi.URLParam(r, "ID"))
 	data := models.EstadoCuentas{
-		ID: int64(id)
+		ID: int64(id),
 	}
 	json.NewDecoder(r.Body).Decode(&data)
 	payload, err := c.repo.Update(r.Context(), &data)

@@ -7,7 +7,9 @@ import (
 
 	driver "User-Management/common"
 
-	controller "User-Management/controllers"
+	calificacionescontrol "User-Management/controllers/calificaciones"
+	comentarioscontrol "User-Management/controllers/comentarios"
+	estadocuentascontrol "User-Management/controllers/estadocuentas"
 
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
@@ -31,9 +33,9 @@ func main() {
 	r.Use(middleware.Recoverer)
 	r.Use(middleware.Logger)
 
-	comentariosHandler := controller.NewComentarioHandler(connection)
-	calificacionesHandler := controller.NewCalificaionHandler(connection)
-	estadocuentasHandler := controller.NewEstadoCuentaHandler(connection)
+	comentariosHandler := comentarioscontrol.NewComentarioHandler(connection)
+	calificacionesHandler := calificacionescontrol.NewCalificaionHandler(connection)
+	estadocuentasHandler := estadocuentascontrol.NewEstadoCuentaHandler(connection)
 
 	r.Route("/", func(rt chi.Router) {
 		rt.Mount("/comentarios", ComentarioRouter(comentariosHandler))
@@ -46,7 +48,7 @@ func main() {
 }
 
 // A completely separate router for posts routes
-func ComentarioRouter(comentariosHandler *controller.Comentarios) http.Handler {
+func ComentarioRouter(comentariosHandler *comentarioscontrol.Comentarios) http.Handler {
 	r := chi.NewRouter()
 	r.Get("/", comentariosHandler.Fetch)
 	r.Get("/{idcomento:[0-9]+}/{idcomentado:[0-9]+}", comentariosHandler.GetByID)
@@ -57,7 +59,7 @@ func ComentarioRouter(comentariosHandler *controller.Comentarios) http.Handler {
 	return r
 }
 
-func CalificacionRouter(calificacionesHandler *controller.Calificaciones) http.Handler {
+func CalificacionRouter(calificacionesHandler *calificacionescontrol.Calificaciones) http.Handler {
 	r := chi.NewRouter()
 	r.Get("/", calificacionesHandler.Fetch)
 	r.Get("/{idcalifico:[0-9]+}/{idcalificado:[0-9]+}", calificacionesHandler.GetByID)
@@ -68,7 +70,7 @@ func CalificacionRouter(calificacionesHandler *controller.Calificaciones) http.H
 	return r
 }
 
-func EstadoCuentaRouter(estadocuentasHandler *controller.EstadoCuentas) http.Handler {
+func EstadoCuentaRouter(estadocuentasHandler *estadocuentascontrol.EstadoCuentas) http.Handler {
 	r := chi.NewRouter()
 	r.Get("/", estadocuentasHandler.Fetch)
 	r.Get("/{id:[0-9]+}", estadocuentasHandler.GetByID)

@@ -1,21 +1,20 @@
 package calificaciones
 
 import (
+	repo "User-Management/data"
+	"User-Management/models"
 	"context"
 	"database/sql"
-
-	repo "User-Management/data"
-	models "User-Management/models"
 )
+
+type mysqlCalificaciones struct {
+	Conn *sql.DB
+}
 
 func NewSQLCalificacion(Conn *sql.DB) repo.Calificaciones {
 	return &mysqlCalificaciones{
 		Conn: Conn,
 	}
-}
-
-type mysqlCalificaciones struct {
-	Conn *sql.DB
 }
 
 func (m *mysqlCalificaciones) fetch(ctx context.Context, query string, args ...interface{}) ([]*models.Calificaciones, error) {

@@ -54,8 +54,8 @@ func (c *Comentarios) Update(w http.ResponseWriter, r *http.Request) {
 	idcomento, _ := strconv.Atoi(chi.URLParam(r, "IDComento"))
 	idcomentado, _ := strconv.Atoi(chi.URLParam(r, "IDComentado"))
 	data := models.Comentarios{
-		IDComento: int64(idcomento)
-		IDComentado: int64(idcomentado)
+		IDComento:   int64(idcomento),
+		IDComentado: int64(idcomentado),
 	}
 	json.NewDecoder(r.Body).Decode(&data)
 	payload, err := c.repo.Update(r.Context(), &data)
