@@ -1,0 +1,16 @@
+version: "2.1"
+services:
+  um-db:
+    image: mysql:5.7
+    healthcheck:
+      test: "mysqlcheck -u$$MYSQL_USER -p$$MYSQL_PASSWORD $$MYSQL_DATABASE"
+      interval: 20s
+      timeout: 5s
+      retries: 15
+    environment:
+      MYSQL_ROOT_PASSWORD: 123
+      MYSQL_DATABASE: userManagement
+      MYSQL_USER: Denis
+      MYSQL_PASSWORD: 978
+    ports:
+      - "3005:3005"
