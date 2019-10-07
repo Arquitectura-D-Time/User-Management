@@ -5,6 +5,7 @@ import (
 	"User-Management/models"
 	"context"
 	"database/sql"
+	"fmt"
 )
 
 type mysqlCalificaciones struct {
@@ -49,6 +50,7 @@ func (m *mysqlCalificaciones) Fetch(ctx context.Context, num int64) ([]*models.C
 
 func (m *mysqlCalificaciones) GetByID(ctx context.Context, IDCalifico int64, IDCalificado int64) (*models.Calificaciones, error) {
 	query := "Select IDCalifico, IDCalificado, Calificacion From Calificaciones where IDCalifico=? AND IDCalificado=?"
+	fmt.Println(IDCalifico + IDCalificado)
 
 	rows, err := m.fetch(ctx, query, IDCalifico, IDCalificado)
 	if err != nil {

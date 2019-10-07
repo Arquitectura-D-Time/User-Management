@@ -69,8 +69,8 @@ func (c *Calificaciones) Update(w http.ResponseWriter, r *http.Request) {
 
 // GetByID returns a calificaiones details
 func (c *Calificaciones) GetByID(w http.ResponseWriter, r *http.Request) {
-	idcalifico, _ := strconv.Atoi(chi.URLParam(r, "IDCalifico"))
-	idcalificado, _ := strconv.Atoi(chi.URLParam(r, "IDCalificado"))
+	idcalifico, _ := strconv.Atoi(chi.URLParam(r, "idcalifico"))
+	idcalificado, _ := strconv.Atoi(chi.URLParam(r, "idcalificado"))
 	payload, err := c.repo.GetByID(r.Context(), int64(idcalifico), int64(idcalificado))
 
 	if err != nil {
