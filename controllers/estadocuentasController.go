@@ -17,7 +17,7 @@ import (
 	"github.com/go-chi/chi"
 )
 
-func NewComentarioHandler(db *driver.DB) *EstadoCuentas {
+func NewEstadoCuentaHandler(db *driver.DB) *EstadoCuentas {
 	return &EstadoCuentas{
 		repo: estadocuentas.NewSQLEstadoCuentas(db.SQL),
 	}

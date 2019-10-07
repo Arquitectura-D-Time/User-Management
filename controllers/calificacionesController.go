@@ -17,7 +17,7 @@ import (
 	"github.com/go-chi/chi"
 )
 
-func NewComentarioHandler(db *driver.DB) *Calificaciones {
+func NewCalificaionHandler(db *driver.DB) *Calificaciones {
 	return &Calificaciones{
 		repo: calificaiones.NewSQLCalificacion(db.SQL),
 	}
