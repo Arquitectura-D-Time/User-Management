@@ -1,26 +1,37 @@
-# golang image where workspace (GOPATH) configured at /go.
-FROM golang:1.13.1 as dev
+# Dockerfile References: https://docs.docker.com/engine/reference/builder/
 
-# Install dependencies
+# Start from the latest golang base image
+FROM golang:latest as builder
+
+# Add Maintainer Info
+LABEL maintainer="Rajeev Singh <rajeevhub@gmail.com>"
+
+# Set the Current Working Directory inside the container
+WORKDIR $GOPATH/src/User-Management
+
+# Download all dependencies. Dependencies will be cached if the go.mod and go.sum files are not changed
 RUN go get -u github.com/go-sql-driver/mysql
 RUN go get -u github.com/go-chi/chi
 
-# copy the local package files to the container workspace
-ADD . /go/src/User-Management
+# Copy the source from the current directory to the Working Directory inside the container
+COPY . .
 
-# Setting up working directory
-WORKDIR /go/src/User-Management
+# Build the Go app
+RUN go build 
 
-# build binary
-RUN CGO_ENABLED=0 GOOS=linux go build -o main.
 
-# alpine image
-FROM alpine:3.9.2 as prod
-# Setting up working directory
+######## Start a new stage from scratch #######
+FROM alpine:latest  
+
+RUN apk --no-cache add ca-certificates
+
 WORKDIR /root/
-# copy movies binary
-COPY --from=dev /go/src/User-Management .
-# Service listens on port 5005.
-EXPOSE 5005
-# Run the movies microservice when the container starts.
-ENTRYPOINT ["./usermanagement"]
+
+# Copy the Pre-built binary file from the previous stage
+COPY --from=builder /go/src/User-Management .
+
+# Expose port 8080 to the outside world
+EXPOSE 5003
+
+# Command to run the executable
+CMD ["./User-Management"] 
