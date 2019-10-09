@@ -16,4 +16,4 @@ COPY . .
 # Build the Go app
 RUN go build 
 
-CMD ["./User-Management"]
+CMD ["./project_user-management_ms"]
