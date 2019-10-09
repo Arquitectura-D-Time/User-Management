@@ -5,11 +5,11 @@ import (
 	"net/http"
 	"os"
 
-	driver "User-Management/common"
+	driver "project_user-management_ms/common"
 
-	calificacionescontrol "User-Management/controllers/calificaciones"
-	comentarioscontrol "User-Management/controllers/comentarios"
-	estadocuentascontrol "User-Management/controllers/estadocuentas"
+	calificacionescontrol "project_user-management_ms/controllers/calificaciones"
+	comentarioscontrol "project_user-management_ms/controllers/comentarios"
+	estadocuentascontrol "project_user-management_ms/controllers/estadocuentas"
 
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
@@ -23,7 +23,7 @@ func main() {
 		dbPort := os.Getenv("DB_PORT")
 	*/
 
-	connection, err := driver.ConnectSQL("10.128.0.2", "3306", "root", "123", "userManagement")
+	connection, err := driver.ConnectSQL("10.128.0.2", "3005", "root", "123", "userManagement")
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(-1)
