@@ -1,8 +1,8 @@
 package calificaciones
 
 import (
-	repo "User-Management/data"
-	"User-Management/models"
+	repo "project_user-management_ms/data"
+	"project_user-management_ms/models"
 	"context"
 	"database/sql"
 	"fmt"

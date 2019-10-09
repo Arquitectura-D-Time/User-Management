@@ -4,8 +4,8 @@ import (
 	"context"
 	"database/sql"
 
-	repo "User-Management/data"
-	models "User-Management/models"
+	repo "project_user-management_ms/data"
+	models "project_user-management_ms/models"
 )
 
 func NewSQLComentario(Conn *sql.DB) repo.Comentarios {

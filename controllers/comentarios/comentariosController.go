@@ -6,13 +6,13 @@ import (
 	"net/http"
 	"strconv"
 
-	driver "User-Management/common"
+	driver "project_user-management_ms/common"
 
-	models "User-Management/models"
+	models "project_user-management_ms/models"
 
-	repository "User-Management/data"
+	repository "project_user-management_ms/data"
 
-	comentarios "User-Management/data/comentarios"
+	comentarios "project_user-management_ms/data/comentarios"
 
 	"github.com/go-chi/chi"
 )

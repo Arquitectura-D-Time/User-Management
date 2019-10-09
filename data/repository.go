@@ -3,7 +3,7 @@ package data
 import (
 	"context"
 
-	"User-Management/models"
+	"project_user-management_ms/models"
 )
 
 type Comentarios interface {
