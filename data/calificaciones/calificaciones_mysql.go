@@ -68,7 +68,7 @@ func (m *mysqlCalificaciones) GetByID(ctx context.Context, IDCalifico int64, IDC
 }
 
 func (m *mysqlCalificaciones) GetAVGByID(ctx context.Context, IDCalificado int64) (*models.Calificaciones, error) {
-	query := "Select IDCalifico, IDCalificado, AVG(Calificacion) AS Calificacion From Calificaciones where IDCalificado=?"
+	query := "Select IDCalificado AS `IDCalifico`, IDCalificado, AVG(Calificacion) AS Calificacion From Calificaciones where IDCalificado=?"
 	fmt.Println(IDCalificado)
 
 	rows, err := m.fetch(ctx, query, IDCalificado)
