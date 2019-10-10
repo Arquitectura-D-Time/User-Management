@@ -63,6 +63,7 @@ func CalificacionRouter(calificacionesHandler *calificacionescontrol.Calificacio
 	r := chi.NewRouter()
 	r.Get("/", calificacionesHandler.Fetch)
 	r.Get("/{idcalifico:[0-9]+}/{idcalificado:[0-9]+}", calificacionesHandler.GetByID)
+	r.Get("/{idcalificado:[0-9]+}", calificacionesHandler.GetAVGByID)
 	r.Post("/", calificacionesHandler.Create)
 	r.Put("/{idcalifico:[0-9]+}/{idcalificado:[0-9]+}", calificacionesHandler.Update)
 	r.Delete("/{idcalifico:[0-9]+}/{idcalificado:[0-9]+}", calificacionesHandler.Delete)

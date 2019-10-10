@@ -1,11 +1,11 @@
 package calificaciones
 
 import (
-	repo "project_user-management_ms/data"
-	"project_user-management_ms/models"
 	"context"
 	"database/sql"
 	"fmt"
+	repo "project_user-management_ms/data"
+	"project_user-management_ms/models"
 )
 
 type mysqlCalificaciones struct {
@@ -53,6 +53,25 @@ func (m *mysqlCalificaciones) GetByID(ctx context.Context, IDCalifico int64, IDC
 	fmt.Println(IDCalifico + IDCalificado)
 
 	rows, err := m.fetch(ctx, query, IDCalifico, IDCalificado)
+	if err != nil {
+		return nil, err
+	}
+
+	payload := &models.Calificaciones{}
+	if len(rows) > 0 {
+		payload = rows[0]
+	} else {
+		return nil, models.ErrNotFound
+	}
+
+	return payload, nil
+}
+
+func (m *mysqlCalificaciones) GetAVGByID(ctx context.Context, IDCalificado int64) (*models.Calificaciones, error) {
+	query := "Select IDCalifico, IDCalificado, AVG(Calificacion) AS Calificacion From Calificaciones where IDCalificado=?"
+	fmt.Println(IDCalificado)
+
+	rows, err := m.fetch(ctx, query, IDCalificado)
 	if err != nil {
 		return nil, err
 	}
