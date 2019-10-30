@@ -82,7 +82,7 @@ func (c *Calificaciones) GetByID(w http.ResponseWriter, r *http.Request) {
 
 func (c *Calificaciones) GetAVGByID(w http.ResponseWriter, r *http.Request) {
 	idcalificado, _ := strconv.Atoi(chi.URLParam(r, "idcalificado"))
-	payload, _ := c.repo.Fetch(r.Context(), int64(idcalificado))
+	payload, _ := c.repo.GetAVGByID(r.Context(), int64(idcalificado))
 
 	respondwithJSON(w, http.StatusOK, payload)
 }
