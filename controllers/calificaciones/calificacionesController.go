@@ -82,11 +82,7 @@ func (c *Calificaciones) GetByID(w http.ResponseWriter, r *http.Request) {
 
 func (c *Calificaciones) GetAVGByID(w http.ResponseWriter, r *http.Request) {
 	idcalificado, _ := strconv.Atoi(chi.URLParam(r, "idcalificado"))
-	payload, err := c.repo.GetAVGByID(r.Context(), int64(idcalificado))
-
-	if err != nil {
-		respondWithError(w, http.StatusNoContent, "Content not found")
-	}
+	payload, _ := c.repo.Fetch(r.Context(), int64(idcalificado))
 
 	respondwithJSON(w, http.StatusOK, payload)
 }
