@@ -7,7 +7,7 @@ import (
 )
 
 type Comentarios interface {
-	Fetch(ctx context.Context, num int64) ([]*models.Comentarios, error)
+	Fetch(ctx context.Context) ([]*models.Comentarios, error)
 	GetByID(ctx context.Context, id int64, id2 int64) (*models.Comentarios, error)
 	GetAllByID(ctx context.Context, id int64) ([]*models.Comentarios, error)
 	Create(ctx context.Context, p *models.Comentarios) (int64, error)

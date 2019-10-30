@@ -30,7 +30,7 @@ type Comentarios struct {
 
 // Fetch all comentarios data
 func (c *Comentarios) Fetch(w http.ResponseWriter, r *http.Request) {
-	payload, _ := c.repo.Fetch(r.Context(), 5)
+	payload, _ := c.repo.Fetch(r.Context())
 
 	respondwithJSON(w, http.StatusOK, payload)
 }

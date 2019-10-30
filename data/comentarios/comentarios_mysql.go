@@ -44,10 +44,10 @@ func (m *mysqlComentarios) fetch(ctx context.Context, query string, args ...inte
 	return payload, nil
 }
 
-func (m *mysqlComentarios) Fetch(ctx context.Context, num int64) ([]*models.Comentarios, error) {
-	query := "Select IDComento, IDComentado, Comentario, Fecha, Hora  From Comentarios limit ?"
+func (m *mysqlComentarios) Fetch(ctx context.Context) ([]*models.Comentarios, error) {
+	query := "Select IDComento, IDComentado, Comentario, Fecha, Hora  From Comentarios"
 
-	return m.fetch(ctx, query, num)
+	return m.fetch(ctx, query)
 }
 
 func (m *mysqlComentarios) GetByID(ctx context.Context, IDComento int64, IDComentado int64) (*models.Comentarios, error) {
