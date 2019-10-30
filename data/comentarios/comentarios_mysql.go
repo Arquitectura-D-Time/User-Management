@@ -31,7 +31,7 @@ func (m *mysqlComentarios) fetch(ctx context.Context, query string, args ...inte
 
 		err := rows.Scan(
 			&data.IDComento,
-			&data.IDComento,
+			&data.IDComentado,
 			&data.Comentario,
 			&data.Fecha,
 			&data.Hora,
