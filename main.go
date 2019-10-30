@@ -52,6 +52,7 @@ func ComentarioRouter(comentariosHandler *comentarioscontrol.Comentarios) http.H
 	r := chi.NewRouter()
 	r.Get("/", comentariosHandler.Fetch)
 	r.Get("/{idcomento:[0-9]+}/{idcomentado:[0-9]+}", comentariosHandler.GetByID)
+	//r.Get("/{idcomentado:[0-9]+}", comentariosHandler.GetAllByID)
 	r.Get("/{idcomentado:[0-9]+}", comentariosHandler.GetAllByID)
 	r.Post("/", comentariosHandler.Create)
 	r.Put("/{idcomento:[0-9]+}/{idcomentado:[0-9]+}", comentariosHandler.Update)
