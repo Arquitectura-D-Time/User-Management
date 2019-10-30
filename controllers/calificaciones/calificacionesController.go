@@ -80,6 +80,20 @@ func (c *Calificaciones) GetByID(w http.ResponseWriter, r *http.Request) {
 	respondwithJSON(w, http.StatusOK, payload)
 }
 
+func (c *Calificaciones) GetAllByID(w http.ResponseWriter, r *http.Request) {
+	idcalificado, _ := strconv.Atoi(chi.URLParam(r, "idcalificado"))
+	payload, _ := c.repo.GetAllByID(r.Context(), int64(idcalificado))
+
+	respondwithJSON(w, http.StatusOK, payload)
+}
+
+func (c *Calificaciones) GetAVGByID(w http.ResponseWriter, r *http.Request) {
+	idcalificado, _ := strconv.Atoi(chi.URLParam(r, "idcalificado"))
+	payload, _ := c.repo.GetAVGByID(r.Context(), int64(idcalificado))
+
+	respondwithJSON(w, http.StatusOK, payload)
+}
+
 // Delete a calificaiones
 func (c *Calificaciones) Delete(w http.ResponseWriter, r *http.Request) {
 	idcalifico, _ := strconv.Atoi(chi.URLParam(r, "idcalifico"))

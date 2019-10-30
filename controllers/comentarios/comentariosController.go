@@ -30,7 +30,7 @@ type Comentarios struct {
 
 // Fetch all comentarios data
 func (c *Comentarios) Fetch(w http.ResponseWriter, r *http.Request) {
-	payload, _ := c.repo.Fetch(r.Context(), 5)
+	payload, _ := c.repo.Fetch(r.Context())
 
 	respondwithJSON(w, http.StatusOK, payload)
 }
@@ -72,6 +72,17 @@ func (c *Comentarios) GetByID(w http.ResponseWriter, r *http.Request) {
 	idcomento, _ := strconv.Atoi(chi.URLParam(r, "idcomento"))
 	idcomentado, _ := strconv.Atoi(chi.URLParam(r, "idcomentado"))
 	payload, err := c.repo.GetByID(r.Context(), int64(idcomento), int64(idcomentado))
+
+	if err != nil {
+		respondWithError(w, http.StatusNoContent, "Content not found")
+	}
+
+	respondwithJSON(w, http.StatusOK, payload)
+}
+
+func (c *Comentarios) GetAllByID(w http.ResponseWriter, r *http.Request) {
+	idcomentado, _ := strconv.Atoi(chi.URLParam(r, "idcomentado"))
+	payload, err := c.repo.GetAllByID(r.Context(), int64(idcomentado))
 
 	if err != nil {
 		respondWithError(w, http.StatusNoContent, "Content not found")
