@@ -80,6 +80,17 @@ func (c *Comentarios) GetByID(w http.ResponseWriter, r *http.Request) {
 	respondwithJSON(w, http.StatusOK, payload)
 }
 
+func (c *Comentarios) GetByAllByID(w http.ResponseWriter, r *http.Request) {
+	idcomentado, _ := strconv.Atoi(chi.URLParam(r, "idcomentado"))
+	payload, err := c.repo.GetByAllByID(r.Context(), int64(idcomentado))
+
+	if err != nil {
+		respondWithError(w, http.StatusNoContent, "Content not found")
+	}
+
+	respondwithJSON(w, http.StatusOK, payload)
+}
+
 // Delete a comentarios
 func (c *Comentarios) Delete(w http.ResponseWriter, r *http.Request) {
 	idcomento, _ := strconv.Atoi(chi.URLParam(r, "idcomento"))
