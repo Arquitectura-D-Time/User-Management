@@ -80,9 +80,9 @@ func (c *Comentarios) GetByID(w http.ResponseWriter, r *http.Request) {
 	respondwithJSON(w, http.StatusOK, payload)
 }
 
-func (c *Comentarios) GetByAllByID(w http.ResponseWriter, r *http.Request) {
+func (c *Comentarios) GetAllByID(w http.ResponseWriter, r *http.Request) {
 	idcomentado, _ := strconv.Atoi(chi.URLParam(r, "idcomentado"))
-	payload, err := c.repo.GetByAllByID(r.Context(), int64(idcomentado))
+	payload, err := c.repo.GetAllByID(r.Context(), int64(idcomentado))
 
 	if err != nil {
 		respondWithError(w, http.StatusNoContent, "Content not found")

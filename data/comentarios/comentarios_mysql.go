@@ -68,22 +68,10 @@ func (m *mysqlComentarios) GetByID(ctx context.Context, IDComento int64, IDComen
 	return payload, nil
 }
 
-func (m *mysqlComentarios) GetByAllByID(ctx context.Context, IDComentado int64) ([]*models.Comentarios, error) {
-	query := "Select IDComento, IDComentado, Comentario, Fecha, Hora From Comentarios where IDComentado=?"
+func (m *mysqlComentarios) GetAllByID(ctx context.Context, IDComentado int64) ([]*models.Comentarios, error) {
+	query := "Select IDComento, IDComentado, Comentario, Fecha, Hora  From Comentarios where IDComentado=?"
 
-	rows, err := m.fetch(ctx, query, IDComentado)
-	if err != nil {
-		return nil, err
-	}
-
-	payload := &models.Comentarios{}
-	if len(rows) > 0 {
-		payload = rows[0]
-	} else {
-		return nil, models.ErrNotFound
-	}
-
-	return payload, nil
+	return m.fetch(ctx, query, IDComentado)
 }
 
 func (m *mysqlComentarios) Create(ctx context.Context, c *models.Comentarios) (int64, error) {
