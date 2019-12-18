@@ -23,7 +23,7 @@ func main() {
 		dbPort := os.Getenv("DB_PORT")
 	*/
 
-	connection, err := driver.ConnectSQL("34.94.168.215", "3005", "root", "123", "userManagement")
+	connection, err := driver.ConnectSQL("http://user-management-db", "3005", "root", "123", "userManagement")
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(-1)
