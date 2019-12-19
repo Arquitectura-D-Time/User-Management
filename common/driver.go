@@ -25,7 +25,7 @@ func ConnectSQL(host, port, uname, pass, dbname string) (*DB, error) {
 		dbname,
 	)
 	*/
-	d, err := sql.Open("mysql", "root:123@tcp(user-management-db:3003)/userManagement")
+	d, err := sql.Open("mysql", "root:123@tcp(34.94.168.215:3005)/userManagement")
 	if err != nil {
 		panic(err)
 	}
